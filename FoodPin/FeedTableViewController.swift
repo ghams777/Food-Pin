@@ -45,12 +45,12 @@ class FeedTableViewController: UITableViewController {
     }
     
     
-    // Fungsi untuk mengambil Record dari CloudKit
+    // Fungsi untuk mengambil Record dari CloudKit (API Convenience)
     func getRecordsFromCloud() {
         
         //Fetch data using Convenience API
         let cloudContainer = CKContainer.defaultContainer()
-        let publicDatabase = cloudContainer.publicCloudDatabase
+        let publicDatabase = CKContainer.defaultContainer().publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
         
@@ -59,13 +59,16 @@ class FeedTableViewController: UITableViewController {
             
             // Jika berhasil
             if error == nil {
-        
-                self.restaurants = results! as [CKRecord]
-                self.tableView.reloadData()
+                
                 print("Completed fetching Restaurant data")
+                self.restaurants = results! as [CKRecord]
                 
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+    
             } else {
-                
+    
                 print(error?.localizedDescription);
                 
             }
@@ -74,6 +77,61 @@ class FeedTableViewController: UITableViewController {
         
         
     }
+    
+    
+    // Fungsi untuk mengambil Record dari CloudKit (API Operational)
+    /* func getRecordsFromCloud() {
+        
+        // Inisialisasi array restoran kosong
+        restaurants = []
+        
+        // Get the Public iCloud Database
+        let cloudContainer = CKContainer.defaultContainer()
+        let publicDatabase = CKContainer.defaultContainer().publicCloudDatabase
+        
+        //Prepare for query
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Restaurant", predicate: predicate)
+        
+        // Create the query operation with the query
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.queuePriority = .VeryHigh
+        queryOperation.resultsLimit = 50
+        
+        queryOperation.recordFetchedBlock = {
+            (record: CKRecord!) -> Void in
+            
+            if let restaurantRecord = record {
+                self.restaurants.append(restaurantRecord)
+            }
+            
+        }
+        
+        
+        queryOperation.queryCompletionBlock = {
+            
+            (cursor: CKQueryCursor?, error: NSError?) -> Void in
+            
+            if error != nil {
+                
+                print("Failed to get data from iCloud - \(error?.localizedDescription)")
+                
+            } else {
+                
+                print("Successfully retrieve the data from iCloud")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                })
+                
+            }
+            
+        }
+        
+        publicDatabase.addOperation(queryOperation)
+        
+    }*/
+    
     
     
     // Mengisi row table dengan record dari CloudKit
