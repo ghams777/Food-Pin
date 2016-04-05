@@ -22,6 +22,7 @@
 		84B29CED1CA129C800530A97 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B29CEC1CA129C800530A97 /* DetailTableViewCell.swift */; };
 		84B4BBCC1CB381D500AD9DF3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4BBCB1CB381D500AD9DF3 /* AboutViewController.swift */; };
 		84B4BBCE1CB381FD00AD9DF3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4BBCD1CB381FD00AD9DF3 /* WebViewController.swift */; };
+		84B4BBD11CB3ACCC00AD9DF3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4BBD01CB3ACCC00AD9DF3 /* CloudKit.framework */; };
 		84B644511CA38DF800394F21 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B644501CA38DF800394F21 /* MapKit.framework */; };
 		84B644531CA3AA1800394F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B644521CA3AA1800394F21 /* MapViewController.swift */; };
 		84EE6C961CB250960003FCA4 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE6C951CB250960003FCA4 /* PageContentViewController.swift */; };
@@ -69,6 +70,8 @@
 		84B29CEC1CA129C800530A97 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		84B4BBCB1CB381D500AD9DF3 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		84B4BBCD1CB381FD00AD9DF3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		84B4BBCF1CB3ACC400AD9DF3 /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FoodPin.entitlements; sourceTree = "<group>"; };
+		84B4BBD01CB3ACCC00AD9DF3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		84B644501CA38DF800394F21 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84B644521CA3AA1800394F21 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		84EE6C951CB250960003FCA4 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B644511CA38DF800394F21 /* MapKit.framework in Frameworks */,
+				84B4BBD11CB3ACCC00AD9DF3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +110,7 @@
 		84B29CA81CA0EB6900530A97 = {
 			isa = PBXGroup;
 			children = (
+				84B4BBD01CB3ACCC00AD9DF3 /* CloudKit.framework */,
 				84B644501CA38DF800394F21 /* MapKit.framework */,
 				84B29CB31CA0EB6900530A97 /* FoodPin */,
 				84B29CC81CA0EB6900530A97 /* FoodPinTests */,
@@ -127,6 +132,7 @@
 		84B29CB31CA0EB6900530A97 /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				84B4BBCF1CB3ACC400AD9DF3 /* FoodPin.entitlements */,
 				84B29CB41CA0EB6900530A97 /* AppDelegate.swift */,
 				84B29CEA1CA1119E00530A97 /* Restaurant.swift */,
 				84B29CE21CA0EBD100530A97 /* RestaurantTableViewController.swift */,
@@ -236,8 +242,12 @@
 				TargetAttributes = {
 					84B29CB01CA0EB6900530A97 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = ZKWQUQ3KVU;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -458,12 +468,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morra.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -471,12 +484,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morra.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
