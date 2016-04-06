@@ -13,6 +13,7 @@ class FeedTableViewController: UITableViewController {
     
     var restaurants: [CKRecord] = []
     
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,15 @@ class FeedTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        // Configure the activity indicator and start animating
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.center = self.view.center
+        spinner.hidesWhenStopped = true
+        self.parentViewController?.view.addSubview(spinner)
+        spinner.startAnimating()
+        
         
         // Mengambil record dari CloudKit
         self.getRecordsFromCloud()
