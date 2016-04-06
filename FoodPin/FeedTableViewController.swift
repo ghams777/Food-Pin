@@ -46,7 +46,7 @@ class FeedTableViewController: UITableViewController {
     
     
     // Fungsi untuk mengambil Record dari CloudKit (API Convenience)
-    func getRecordsFromCloud() {
+    /* func getRecordsFromCloud() {
         
         //Fetch data using Convenience API
         let cloudContainer = CKContainer.defaultContainer()
@@ -76,11 +76,11 @@ class FeedTableViewController: UITableViewController {
         }
         
         
-    }
+    }*/
     
     
     // Fungsi untuk mengambil Record dari CloudKit (API Operational)
-    /* func getRecordsFromCloud() {
+     func getRecordsFromCloud() {
         
         // Inisialisasi array restoran kosong
         restaurants = []
@@ -130,7 +130,7 @@ class FeedTableViewController: UITableViewController {
         
         publicDatabase.addOperation(queryOperation)
         
-    }*/
+    }
     
     
     
