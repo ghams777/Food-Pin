@@ -13,7 +13,7 @@ class FeedTableViewController: UITableViewController {
     
     var restaurants: [CKRecord] = []
     
-    //var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     var imageCache: NSCache = NSCache()
     
@@ -28,12 +28,17 @@ class FeedTableViewController: UITableViewController {
         
         
         // Configure the activity indicator and start animating
-        /*spinner.activityIndicatorViewStyle = .Gray
+        spinner.activityIndicatorViewStyle = .Gray
         spinner.center = self.view.center
         spinner.hidesWhenStopped = true
         self.parentViewController?.view.addSubview(spinner)
-        spinner.startAnimating()*/
+        spinner.startAnimating()
         
+        // Pull to Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.whiteColor()
+        refreshControl?.tintColor = UIColor.grayColor()
+        refreshControl?.addTarget(self, action: "getRecordsFromCloud", forControlEvents: UIControlEvents.ValueChanged)
         
         // Mengambil record dari CloudKit
         self.getRecordsFromCloud()
@@ -126,6 +131,18 @@ class FeedTableViewController: UITableViewController {
         queryOperation.queryCompletionBlock = {
             
             (cursor: CKQueryCursor?, error: NSError?) -> Void in
+            
+            
+            // Jika selesai reload semua data, stop spinner
+            if self.spinner.isAnimating() {
+                dispatch_async(dispatch_get_main_queue(),
+                    {
+                        self.spinner.stopAnimating()
+                })
+            }
+            
+            // Sembunyikan refresh control
+            self.refreshControl?.endRefreshing()
             
             if error != nil {
                 
