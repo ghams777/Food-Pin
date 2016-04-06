@@ -13,7 +13,9 @@ class FeedTableViewController: UITableViewController {
     
     var restaurants: [CKRecord] = []
     
-    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+    //var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    var imageCache: NSCache = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,11 @@ class FeedTableViewController: UITableViewController {
         
         
         // Configure the activity indicator and start animating
-        spinner.activityIndicatorViewStyle = .Gray
+        /*spinner.activityIndicatorViewStyle = .Gray
         spinner.center = self.view.center
         spinner.hidesWhenStopped = true
         self.parentViewController?.view.addSubview(spinner)
-        spinner.startAnimating()
+        spinner.startAnimating()*/
         
         
         // Mengambil record dari CloudKit
@@ -102,6 +104,7 @@ class FeedTableViewController: UITableViewController {
         //Prepare for query
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
@@ -183,35 +186,47 @@ class FeedTableViewController: UITableViewController {
         // Set default camera image
         cell.imageView?.image = UIImage(named: "camera")
         
-        // Fetch Image from iCloud in background
-        let publicDatabase = CKContainer.defaultContainer().publicCloudDatabase
         
-        let fetchRecordsImageOperation  = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
-        fetchRecordsImageOperation.desiredKeys = ["image"]
-        fetchRecordsImageOperation.queuePriority = .VeryHigh
-        fetchRecordsImageOperation.perRecordCompletionBlock = {(record: CKRecord?, recordID: CKRecordID?, error: NSError?) -> Void in
+        // Apakah gambar sudah di cache atau belum
+        if let imageFileURL = imageCache.objectForKey(restaurant.recordID) as? NSURL {
             
+            print("Get image from cache")
+            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageFileURL)!)
             
-            if error != nil {
-                print("Failed to get restaurant image: \(error!.localizedDescription)")
-            } else {
+        } else {
+            
+            // Fetch Image from iCloud in background
+            let publicDatabase = CKContainer.defaultContainer().publicCloudDatabase
+            
+            let fetchRecordsImageOperation  = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+            fetchRecordsImageOperation.desiredKeys = ["image"]
+            fetchRecordsImageOperation.queuePriority = .VeryHigh
+            fetchRecordsImageOperation.perRecordCompletionBlock = {(record: CKRecord?, recordID: CKRecordID?, error: NSError?) -> Void in
                 
-                if let restaurantRecord = record {
-                    dispatch_async(dispatch_get_main_queue(), {
+                
+                if error != nil {
+                    print("Failed to get restaurant image: \(error!.localizedDescription)")
+                } else {
+                    if let restaurantRecord = record {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            
+                            let imageAsset = restaurantRecord.objectForKey("image") as! CKAsset
+                            
+                            self.imageCache.setObject(imageAsset.fileURL, forKey: restaurant.recordID)
+                            
+                            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)
+                            
+                        })
                         
-                        let imageAsset = restaurantRecord.objectForKey("image") as! CKAsset
-                        
-                        cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)
-                        
-                    })
+                    }
                     
                 }
                 
             }
             
+            publicDatabase.addOperation(fetchRecordsImageOperation)
+            
         }
-        
-        publicDatabase.addOperation(fetchRecordsImageOperation)
         
         
         return cell
