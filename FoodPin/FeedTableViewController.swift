@@ -109,7 +109,7 @@ class FeedTableViewController: UITableViewController {
         //Prepare for query
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
