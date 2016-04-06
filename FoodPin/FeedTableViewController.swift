@@ -95,7 +95,7 @@ class FeedTableViewController: UITableViewController {
         
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name"]
         queryOperation.queuePriority = .VeryHigh
         queryOperation.resultsLimit = 50
         
