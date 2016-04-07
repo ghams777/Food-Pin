@@ -30,6 +30,8 @@
 		84DD1E811CB6408400559610 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DD1E831CB6408400559610 /* Localizable.strings */; };
 		84DD1E861CB6408400559610 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DD1E881CB6408400559610 /* InfoPlist.strings */; };
 		84DD1E8B1CB6408500559610 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DD1E8D1CB6408500559610 /* InfoPlist.strings */; };
+		84DD1E971CB64C7200559610 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD1E991CB64C7200559610 /* about.png */; };
+		84DD1E9C1CB64E5000559610 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD1E9E1CB64E5000559610 /* about.png */; };
 		84EE6C961CB250960003FCA4 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE6C951CB250960003FCA4 /* PageContentViewController.swift */; };
 		84EE6C981CB254F50003FCA4 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE6C971CB254F50003FCA4 /* PageViewController.swift */; };
 		84F0821D1CA299B400F4CE29 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0821C1CA299B400F4CE29 /* ReviewViewController.swift */; };
@@ -86,6 +88,9 @@
 		84DD1E821CB6408400559610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84DD1E871CB6408400559610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84DD1E8C1CB6408500559610 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84DD1E981CB64C7200559610 /* id */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = id; path = id.lproj/about.png; sourceTree = "<group>"; };
+		84DD1E9D1CB64E5000559610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/about.png; sourceTree = "<group>"; };
+		84DD1E9F1CB64E5200559610 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/about.png; sourceTree = "<group>"; };
 		84EE6C951CB250960003FCA4 /* PageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
 		84EE6C971CB254F50003FCA4 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		84F0821C1CA299B400F4CE29 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +151,8 @@
 			children = (
 				84DD1E8D1CB6408500559610 /* InfoPlist.strings */,
 				84DD1E831CB6408400559610 /* Localizable.strings */,
+				84DD1E9E1CB64E5000559610 /* about.png */,
+				84DD1E991CB64C7200559610 /* about.png */,
 				84B4BBCF1CB3ACC400AD9DF3 /* FoodPin.entitlements */,
 				84B29CB41CA0EB6900530A97 /* AppDelegate.swift */,
 				84B29CEA1CA1119E00530A97 /* Restaurant.swift */,
@@ -286,6 +293,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 84B29CA81CA0EB6900530A97;
 			productRefGroup = 84B29CB21CA0EB6900530A97 /* Products */;
@@ -309,6 +317,8 @@
 				84B29CBC1CA0EB6900530A97 /* Assets.xcassets in Resources */,
 				84B29CBA1CA0EB6900530A97 /* Main.storyboard in Resources */,
 				84DD1E8B1CB6408500559610 /* InfoPlist.strings in Resources */,
+				84DD1E971CB64C7200559610 /* about.png in Resources */,
+				84DD1E9C1CB64E5000559610 /* about.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +444,23 @@
 				84DD1E8C1CB6408500559610 /* id */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		84DD1E991CB64C7200559610 /* about.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84DD1E981CB64C7200559610 /* id */,
+			);
+			name = about.png;
+			sourceTree = "<group>";
+		};
+		84DD1E9E1CB64E5000559610 /* about.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84DD1E9D1CB64E5000559610 /* Base */,
+				84DD1E9F1CB64E5200559610 /* en */,
+			);
+			name = about.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

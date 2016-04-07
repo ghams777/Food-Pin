@@ -22,7 +22,7 @@
         <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "3Tr-2N-LRi";</note>
       </trans-unit>
       <trans-unit id="5Qh-3L-jLU.text">
-        <source>Name</source>
+        <source>NAME</source>
         <target>Nama</target>
         <note>Class = "UILabel"; text = "NAME"; ObjectID = "5Qh-3L-jLU";</note>
       </trans-unit>
@@ -67,8 +67,8 @@
         <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "KZZ-8P-fwb";</note>
       </trans-unit>
       <trans-unit id="LTG-qr-zMR.text">
-        <source>Location</source>
-        <target>Lokasi</target>
+        <source>LOCATION</source>
+        <target>LOKASI</target>
         <note>Class = "UILabel"; text = "Location"; ObjectID = "LTG-qr-zMR";</note>
       </trans-unit>
       <trans-unit id="Nqs-iY-Gjt.text">
@@ -82,12 +82,12 @@
         <note>Class = "UITextField"; placeholder = "Restaurant Type"; ObjectID = "SNh-UF-JLX";</note>
       </trans-unit>
       <trans-unit id="Sfu-8U-bJL.text">
-        <source>Location</source>
+        <source>LOCATION</source>
         <target>Lokasi</target>
         <note>Class = "UILabel"; text = "LOCATION"; ObjectID = "Sfu-8U-bJL";</note>
       </trans-unit>
       <trans-unit id="VKl-m3-7sT.text">
-        <source>TYPE</source>
+        <source>Type</source>
         <target>Tipe</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "VKl-m3-7sT";</note>
       </trans-unit>
@@ -127,7 +127,7 @@
         <note>Class = "UILabel"; text = "Sub Heading"; ObjectID = "dec-lb-eg0";</note>
       </trans-unit>
       <trans-unit id="e22-aZ-WIm.text">
-        <source>Have You been here?</source>
+        <source>HAVE YOU BEEN HERE?</source>
         <target>Apakah Kamu pernah kemari?</target>
         <note>Class = "UILabel"; text = "HAVE YOU BEEN HERE?"; ObjectID = "e22-aZ-WIm";</note>
       </trans-unit>
@@ -182,7 +182,7 @@
         <note>Class = "UIButton"; normalTitle = "Forward"; ObjectID = "vRk-5k-FnF";</note>
       </trans-unit>
       <trans-unit id="vt2-fz-bDY.text">
-        <source>Type</source>
+        <source>TYPE</source>
         <target>Tipe</target>
         <note>Class = "UILabel"; text = "TYPE"; ObjectID = "vt2-fz-bDY";</note>
       </trans-unit>
