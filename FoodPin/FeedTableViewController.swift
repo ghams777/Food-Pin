@@ -231,7 +231,7 @@ class FeedTableViewController: UITableViewController {
                             
                             self.imageCache.setObject(imageAsset.fileURL, forKey: restaurant.recordID)
                             
-                            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)
+                            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)	
                             
                         })
                         

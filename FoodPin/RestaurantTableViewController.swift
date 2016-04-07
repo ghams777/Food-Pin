@@ -248,12 +248,20 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (UITableViewRowAction, NSIndexPath) -> Void in
             
-            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
+            //let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
+            let shareMenu = UIAlertController(title: nil, message: NSLocalizedString("Share using", comment: "For social sharing"), preferredStyle: .ActionSheet)
             
-            let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: nil)
-            let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: nil)
-            let emailAction = UIAlertAction(title: "Email", style: .Default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            //let twitterAction = UIAlertAction(title: "Twitter", style: .Default, handler: nil)
+            let twitterAction = UIAlertAction(title: NSLocalizedString("Twitter", comment: "For sharing twitter"), style: .Default, handler: nil)
+            
+            //let facebookAction = UIAlertAction(title: "Facebook", style: .Default, handler: nil)
+            let facebookAction = UIAlertAction(title: NSLocalizedString("Facebook", comment: "For sharing on Facebook"), style: .Default, handler: nil)
+            
+            //let emailAction = UIAlertAction(title: "Email", style: .Default, handler: nil)
+            let emailAction = UIAlertAction(title: NSLocalizedString("Email", comment: "For sharing on Email"), style: .Default, handler: nil)
+            
+            //let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .Cancel, handler: nil)
             
             
             shareMenu.addAction(twitterAction)
