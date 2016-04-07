@@ -13,7 +13,6 @@
     <body>
       <trans-unit id="2Kt-SW-cb0.text">
         <source>You've dined here. What do you think?</source>
-        <target>
         <note>Class = "UILabel"; text = "You've dined here. What do you think?"; ObjectID = "2Kt-SW-cb0";</note>
       </trans-unit>
       <trans-unit id="3Tr-2N-LRi.normalTitle">
@@ -182,22 +181,27 @@
     <body>
       <trans-unit id="Cancel">
         <source>Cancel</source>
+        <target>Batal</target>
         <note>Cancel</note>
       </trans-unit>
       <trans-unit id="Email">
         <source>Email</source>
+        <target>Email</target>
         <note>For sharing on Email</note>
       </trans-unit>
       <trans-unit id="Facebook">
         <source>Facebook</source>
+        <target>Facebook</target>
         <note>For sharing on Facebook</note>
       </trans-unit>
       <trans-unit id="Share using">
         <source>Share using</source>
+        <target>Bagikan dengan</target>
         <note>For social sharing</note>
       </trans-unit>
       <trans-unit id="Twitter">
         <source>Twitter</source>
+        <target>Twitter</target>
         <note>For sharing twitter</note>
       </trans-unit>
     </body>
