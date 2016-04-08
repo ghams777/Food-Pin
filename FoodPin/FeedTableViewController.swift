@@ -210,6 +210,7 @@ class FeedTableViewController: UITableViewController {
             print("Get image from cache")
             cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageFileURL)!)
             
+            
         } else {
             
             // Fetch Image from iCloud in background
