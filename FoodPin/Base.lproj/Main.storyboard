@@ -834,7 +834,6 @@
                                     <outlet property="nameLabel" destination="DrN-Fm-wiF" id="RQR-dy-M8R"/>
                                     <outlet property="thumbnailImageView" destination="Pla-4m-nB1" id="XCc-TC-7Ab"/>
                                     <outlet property="typeLabel" destination="ABL-WY-gKA" id="PTT-1k-ssQ"/>
-                                    <segue destination="Hxu-qh-qGd" kind="push" identifier="showRestaurantDetailFromFeed" id="Sme-U4-aue"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1022,7 +1021,4 @@
         <image name="message" width="64" height="64"/>
         <image name="twitter" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Sme-U4-aue"/>
-    </inferredMetricsTieBreakers>
 </document>
