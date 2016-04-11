@@ -16,6 +16,7 @@ class FeedTableViewController: UITableViewController {
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     
     var imageCache: NSCache = NSCache()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class FeedTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        self.tableView.estimatedRowHeight = 80.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         // Configure the activity indicator and start animating
         spinner.activityIndicatorViewStyle = .Gray
@@ -114,7 +117,7 @@ class FeedTableViewController: UITableViewController {
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
         //queryOperation.desiredKeys = ["name", "image"]
-        queryOperation.desiredKeys = ["name"]
+        queryOperation.desiredKeys = ["name", "location", "type"]
         queryOperation.queuePriority = .VeryHigh
         queryOperation.resultsLimit = 50
         
@@ -189,7 +192,7 @@ class FeedTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! FeedTableViewCell
         
         if restaurants.isEmpty {
             return cell
@@ -197,18 +200,21 @@ class FeedTableViewController: UITableViewController {
         
         // Configure the cell...
         let restaurant = restaurants[indexPath.row]
-        cell.textLabel!.text = restaurant.objectForKey("name") as? String
+        cell.nameLabel!.text = restaurant.objectForKey("name") as? String
+        cell.locationLabel!.text = restaurant.objectForKey("location") as? String
+        cell.typeLabel!.text = restaurant.objectForKey("type") as? String
+        //cell.textLabel!.text = restaurant.objectForKey("name") as? String
     
         
         // Set default camera image
-        cell.imageView?.image = UIImage(named: "camera")
+        cell.thumbnailImageView.image = UIImage(named: "camera")
         
         
         // Apakah gambar sudah di cache atau belum
         if let imageFileURL = imageCache.objectForKey(restaurant.recordID) as? NSURL {
             
             print("Get image from cache")
-            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageFileURL)!)
+            cell.thumbnailImageView.image = UIImage(data: NSData(contentsOfURL: imageFileURL)!)
             
             
         } else {
@@ -232,7 +238,7 @@ class FeedTableViewController: UITableViewController {
                             
                             self.imageCache.setObject(imageAsset.fileURL, forKey: restaurant.recordID)
                             
-                            cell.imageView?.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)	
+                            cell.thumbnailImageView.image = UIImage(data: NSData(contentsOfURL: imageAsset.fileURL)!)
                             
                         })
                         
@@ -246,6 +252,8 @@ class FeedTableViewController: UITableViewController {
             
         }
         
+        cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.width / 2
+        cell.thumbnailImageView.clipsToBounds = true
         
         return cell
     }
