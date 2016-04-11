@@ -79,7 +79,7 @@
                                     <outlet property="nameLabel" destination="bl1-yY-SbC" id="v8O-yC-xFr"/>
                                     <outlet property="thumbnailImageView" destination="VYY-3N-6MG" id="vgW-Cx-C5d"/>
                                     <outlet property="typeLabel" destination="VKl-m3-7sT" id="cJW-e6-VjQ"/>
-                                    <segue destination="Hxu-qh-qGd" kind="push" identifier="showRestaurantDetail" id="R4V-ln-6Hh"/>
+                                    <segue destination="Hxu-qh-qGd" kind="push" identifier="showRestaurantDetailFromFavorite" id="R4V-ln-6Hh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -784,11 +784,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="e0Z-A7-Jtj" customClass="FeedTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="e0Z-A7-Jtj" customClass="FeedTableViewCell" customModule="FoodPin" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e0Z-A7-Jtj" id="tCu-O7-KvO">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrN-Fm-wiF">
@@ -834,6 +834,7 @@
                                     <outlet property="nameLabel" destination="DrN-Fm-wiF" id="RQR-dy-M8R"/>
                                     <outlet property="thumbnailImageView" destination="Pla-4m-nB1" id="XCc-TC-7Ab"/>
                                     <outlet property="typeLabel" destination="ABL-WY-gKA" id="PTT-1k-ssQ"/>
+                                    <segue destination="Hxu-qh-qGd" kind="push" identifier="showRestaurantDetailFromFeed" id="Sme-U4-aue"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1021,4 +1022,7 @@
         <image name="message" width="64" height="64"/>
         <image name="twitter" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sme-U4-aue"/>
+    </inferredMetricsTieBreakers>
 </document>

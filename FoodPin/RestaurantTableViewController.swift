@@ -347,7 +347,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "showRestaurantDetail" {
+        if segue.identifier == "showRestaurantDetailFromFavorite" {
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 

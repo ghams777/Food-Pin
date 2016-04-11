@@ -46,6 +46,11 @@ class FeedTableViewController: UITableViewController {
         // Mengambil record dari CloudKit
         self.getRecordsFromCloud()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.hidesBarsOnSwipe = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -295,14 +300,29 @@ class FeedTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        /*if segue.identifier == "showRestaurantDetailFromFeed" {
+            
+                
+            if let indexPath = self.tableView.indexPathForSelectedRow as? UITableViewCell {
+            
+                
+                let destinationController = segue.destinationViewController as! DetailViewController
+                
+                destinationController.restaurant = restaurants[indexPath.row]
+                
+                destinationController.hidesBottomBarWhenPushed = true
+            }
+            
+        }*/
+        
     }
-    */
 
 }
